@@ -1,0 +1,91 @@
+{
+  "arm": "solo",
+  "issue": 2,
+  "slug": "clamp-window",
+  "branch": "feat/clamp-window-solo",
+  "tier": "easy",
+  "pr": 12,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/12",
+  "headSha": "35c426402daf5aea3483b41e658c6fb1cda9f827",
+  "prTitle": "feat: add clampWindow — constrain a number to an inclusive range",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 5,
+  "criteriaTotal": 5,
+  "criteria": [
+    {
+      "check": "AC1 clamp-window: returns the value unchanged when it already sits inside the bounds",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 clamp-window: clamps to the nearer bound when the value falls outside",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 clamp-window: accepts equal bounds and returns that single permitted value",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 clamp-window: rejects inverted bounds and malformed arguments",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 clamp-window: preserves fractional values rather than rounding them",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 148,
+  "concurrentRuns": 1,
+  "tokens": {
+    "input": 22,
+    "output": 6018,
+    "reasoning": 0,
+    "cacheWrite": 27442,
+    "cacheRead": 338157
+  },
+  "costUsd": 0.2947,
+  "modelSteps": 20,
+  "toolCalls": 21,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 1,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/clamp-window.js",
+    "test/clamp-window.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

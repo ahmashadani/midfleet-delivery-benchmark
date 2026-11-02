@@ -1,0 +1,128 @@
+{
+  "arm": "solo",
+  "issue": 11,
+  "slug": "roster-assign",
+  "branch": "feat/roster-assign-solo",
+  "tier": "long",
+  "pr": 22,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/22",
+  "headSha": "be4fdf7a92e30dfd5b98b67b3552290461a06b20",
+  "prTitle": "feat: roster-assign — assign agents to slots under capability constraints",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 12,
+  "criteriaTotal": 12,
+  "criteria": [
+    {
+      "check": "AC1 roster-assign: assigns one agent per slot when the match is unambiguous",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 roster-assign: never assigns the same agent to two slots",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 roster-assign: skips agents that are busy",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 roster-assign: requires every listed capability, not merely one of them",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 roster-assign: reports unfilled slots in the order the slots were declared",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 roster-assign: breaks ties by agent id ascending, so the result is deterministic",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 roster-assign: assignments are returned in slot declaration order",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC8 roster-assign: handles an empty agent pool and reports every slot unfilled",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC9 roster-assign: fills every slot when a complete assignment exists, even if a greedy pick would not",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC10 roster-assign: finds a complete assignment across a longer chain of constrained slots",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC11 roster-assign: rejects malformed definitions",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC12 roster-assign: does not mutate the definition it is given",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 362,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 23,
+    "output": 10986,
+    "reasoning": 0,
+    "cacheWrite": 35658,
+    "cacheRead": 447401
+  },
+  "costUsd": 0.4328,
+  "modelSteps": 21,
+  "toolCalls": 22,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 2,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/roster-assign/assign.js",
+    "src/roster-assign/index.js",
+    "src/roster-assign/validate.js",
+    "test/roster-assign.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

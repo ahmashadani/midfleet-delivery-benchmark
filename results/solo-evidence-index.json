@@ -1,0 +1,101 @@
+{
+  "arm": "solo",
+  "issue": 6,
+  "slug": "evidence-index",
+  "branch": "feat/evidence-index-solo",
+  "tier": "medium",
+  "pr": 16,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/16",
+  "headSha": "49c6eab72419506f64bc1f605bf05f1da4291cc0",
+  "prTitle": "feat: implement evidence-index (issue #6)",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 7,
+  "criteriaTotal": 7,
+  "criteria": [
+    {
+      "check": "AC1 evidence-index: adds evidence and finds it by id",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 evidence-index: refuses a duplicate id and leaves the first entry intact",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 evidence-index: lists evidence for a stage, sorted by id",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 evidence-index: summarises counts by type, with type keys in ascending order",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 evidence-index: reports which required types are missing",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 evidence-index: rejects malformed evidence and arguments",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 evidence-index: reads return copies, so a caller cannot mutate the index through them",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 218,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 23,
+    "output": 7494,
+    "reasoning": 0,
+    "cacheWrite": 30755,
+    "cacheRead": 394383
+  },
+  "costUsd": 0.3461,
+  "modelSteps": 21,
+  "toolCalls": 22,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 3,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/evidence-index.js",
+    "test/evidence-index.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

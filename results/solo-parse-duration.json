@@ -1,0 +1,91 @@
+{
+  "arm": "solo",
+  "issue": 4,
+  "slug": "parse-duration",
+  "branch": "feat/parse-duration-solo",
+  "tier": "easy",
+  "pr": 14,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/14",
+  "headSha": "d0236f41757a75395116c33db3360a81ae7db298",
+  "prTitle": "feat: add parseDuration — issue #4",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 5,
+  "criteriaTotal": 5,
+  "criteria": [
+    {
+      "check": "AC1 parse-duration: parses a single segment into milliseconds",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 parse-duration: sums multiple segments regardless of the order they appear in",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 parse-duration: rejects a repeated unit",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 parse-duration: rejects malformed input",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 parse-duration: accepts a zero count and always returns a safe integer",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 177,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 24,
+    "output": 6996,
+    "reasoning": 0,
+    "cacheWrite": 22597,
+    "cacheRead": 341157
+  },
+  "costUsd": 0.2921,
+  "modelSteps": 22,
+  "toolCalls": 24,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 2,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/parse-duration.js",
+    "test/parse-duration.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}
