@@ -1,0 +1,13 @@
+{
+  "name": "midfleet-delivery-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "verify": "node --test \"test/**/*.test.js\"",
+    "acceptance": "node --test \"acceptance/**/*.test.js\"",
+    "score": "node scripts/score.mjs"
+  }
+}

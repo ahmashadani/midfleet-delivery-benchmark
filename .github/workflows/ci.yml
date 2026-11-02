@@ -1,0 +1,93 @@
+name: CI
+
+# Both arms of the benchmark are judged here, by criteria neither of them wrote.
+#
+# The point of running each acceptance criterion as its own named check is that a red
+# result names what is unmet. "tests failed" tells a reader nothing about whether the
+# work was finished; "AC7 lease-ledger: reaping releases every held role" does.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      # Note this runs only test/, never acceptance/. A delivery's own suite passing is
+      # not evidence that the delivery is complete.
+      - run: npm run verify
+
+  guard:
+    name: criteria unmodified
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # An oracle a delivery can edit is not an oracle.
+      - name: acceptance/ and scripts/ are unchanged
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags origin "$BASE"
+          failed=0
+          for path in acceptance scripts .github/workflows AGENTS.md package.json package-lock.json; do
+            if ! git diff --quiet "origin/$BASE...HEAD" -- "$path"; then
+              echo "::error::This branch modifies $path, which the benchmark rules forbid."
+              git diff --stat "origin/$BASE...HEAD" -- "$path"
+              failed=1
+            fi
+          done
+          exit $failed
+
+  select:
+    name: select criteria
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.build.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - id: build
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          matrix=$(node scripts/criteria-matrix.mjs "$HEAD_REF")
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+          echo "$matrix" | node -e "
+            const m = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+            console.log('Judging this branch against ' + m.include.length + ' criteria:');
+            for (const e of m.include) console.log('  - ' + e.check);
+          "
+
+  criteria:
+    name: ${{ matrix.check }}
+    needs: [select, guard]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.select.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: ${{ matrix.check }}
+        run: node --test --test-name-pattern "${{ matrix.pattern }}" "acceptance/${{ matrix.slug }}.acceptance.test.js"
