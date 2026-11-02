@@ -1,0 +1,131 @@
+{
+  "arm": "solo",
+  "issue": 9,
+  "slug": "stage-graph",
+  "branch": "feat/stage-graph-solo",
+  "tier": "long",
+  "pr": 20,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/20",
+  "headSha": "e1395abe577e734a25c399e513adf49da7893df9",
+  "prTitle": "feat: implement stage-graph module (issue #9)",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 13,
+  "criteriaTotal": 13,
+  "criteria": [
+    {
+      "check": "AC1 stage-graph: accepts a valid graph and reports its stages in declaration order",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 stage-graph: rejects a graph with a duplicate stage id",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 stage-graph: rejects an edge naming a stage that does not exist",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 stage-graph: rejects a cycle and names the stages involved",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 stage-graph: rejects a graph with more than one stage that nothing leads to",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 stage-graph: reports every terminal stage, sorted ascending",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 stage-graph: returns a topological order consistent with every edge",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC8 stage-graph: resolves the next stage for an outcome, and null at a terminal",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC9 stage-graph: supports branching on different outcomes from one stage",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC10 stage-graph: rejects two edges from the same stage on the same outcome",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC11 stage-graph: validates the shape of stages and edges",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC12 stage-graph: reads return copies, so a caller cannot reshape the graph",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC13 stage-graph: a graph built from a definition is unaffected by later mutation of it",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 308,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 21,
+    "output": 9455,
+    "reasoning": 0,
+    "cacheWrite": 27075,
+    "cacheRead": 346183
+  },
+  "costUsd": 0.3473,
+  "modelSteps": 19,
+  "toolCalls": 21,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 1,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/stage-graph/index.js",
+    "test/stage-graph.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

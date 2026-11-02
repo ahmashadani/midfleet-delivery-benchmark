@@ -1,0 +1,101 @@
+{
+  "arm": "solo",
+  "issue": 7,
+  "slug": "capacity-window",
+  "branch": "feat/capacity-window-solo",
+  "tier": "medium",
+  "pr": 17,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/17",
+  "headSha": "5d38fa48b047473f8fb8601f7a2aa3173737b8f6",
+  "prTitle": "feat: capacity-window — reservation ledger with conservation invariant (#7)",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 7,
+  "criteriaTotal": 7,
+  "criteria": [
+    {
+      "check": "AC1 capacity-window: reserves capacity and reports what remains",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 capacity-window: refuses a reservation larger than what is available",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 capacity-window: releases a holder and returns its capacity",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 capacity-window: a holder reserving again adds to its existing reservation",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 capacity-window: reports holders sorted by name with their amounts",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 capacity-window: rejects malformed arguments",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 capacity-window: reserved and available always sum to total across a long mixed sequence",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 205,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 24,
+    "output": 7502,
+    "reasoning": 0,
+    "cacheWrite": 23497,
+    "cacheRead": 353721
+  },
+  "costUsd": 0.3068,
+  "modelSteps": 22,
+  "toolCalls": 23,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 1,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/capacity-window.js",
+    "test/capacity-window.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

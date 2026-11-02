@@ -1,0 +1,136 @@
+{
+  "arm": "solo",
+  "issue": 8,
+  "slug": "lease-ledger",
+  "branch": "feat/lease-ledger-solo",
+  "tier": "long",
+  "pr": 18,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/18",
+  "headSha": "f213040a0ab22f50b941e890ee6a2e964c3f9a10",
+  "prTitle": "feat: lease-ledger — roster leases with atomic acquisition and reaping",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 14,
+  "criteriaTotal": 14,
+  "criteria": [
+    {
+      "check": "AC1 lease-ledger: acquires a lease and reports it held",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 lease-ledger: refuses to acquire a role already held by another run",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 lease-ledger: allows a different run to take a role once the first lease expires",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 lease-ledger: renews a held lease and extends it from the renewal moment",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 lease-ledger: refuses to renew an expired or unknown lease",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 lease-ledger: releases a lease and frees every role it held",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 lease-ledger: reaping releases every expired lease and leaves live ones alone",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC8 lease-ledger: reaping is idempotent and reports nothing on a second pass",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC9 lease-ledger: an acquisition that fails partway frees every role it had taken",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC10 lease-ledger: a run may hold only one lease at a time",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC11 lease-ledger: heldRoles is sorted ascending and excludes expired leases",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC12 lease-ledger: snapshot reports every live lease, sorted by runId, without exposing internals",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC13 lease-ledger: rejects malformed arguments",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC14 lease-ledger: release and reap are consistent: a reaped run cannot be renewed or released twice",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 260,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 23,
+    "output": 11186,
+    "reasoning": 0,
+    "cacheWrite": 30933,
+    "cacheRead": 418347
+  },
+  "costUsd": 0.4094,
+  "modelSteps": 21,
+  "toolCalls": 22,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 2,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/lease-ledger/index.js",
+    "test/lease-ledger.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}

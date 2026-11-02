@@ -1,0 +1,126 @@
+{
+  "arm": "solo",
+  "issue": 10,
+  "slug": "audit-trail",
+  "branch": "feat/audit-trail-solo",
+  "tier": "long",
+  "pr": 21,
+  "prUrl": "https://github.com/ahmashadani/midfleet-delivery-benchmark/pull/21",
+  "headSha": "6420f2d9a74dcf5d59a60081f7c782f3e14ef2a9",
+  "prTitle": "feat(audit-trail): implement append-only tamper-detectable audit trail (#10)",
+  "engine": {
+    "tool": "opencode 1.18.35",
+    "model": "anthropic/claude-sonnet-4-6",
+    "agents": 1,
+    "reviewer": false
+  },
+  "criteriaPassed": 12,
+  "criteriaTotal": 12,
+  "criteria": [
+    {
+      "check": "AC1 audit-trail: appends an entry and returns it with a sequence number",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC2 audit-trail: numbers entries from one upwards with no gaps",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC3 audit-trail: refuses an entry timestamped before the previous one",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC4 audit-trail: chains each entry to its predecessor",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC5 audit-trail: reads the trail back in order and returns copies",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC6 audit-trail: filters by actor and by action, preserving order",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC7 audit-trail: redacts an entry target while keeping it in the chain",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC8 audit-trail: refuses to redact twice or to redact an unknown entry",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC9 audit-trail: rejects malformed entries, clocks and redactions",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC10 audit-trail: verify accepts an untampered trail, including a redacted one",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC11 audit-trail: verify detects a trail whose contents no longer match its chain",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "AC12 audit-trail: the trail is append-only: entries cannot be removed or reordered",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "otherChecks": [
+    {
+      "check": "criteria unmodified",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "tests",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    },
+    {
+      "check": "select criteria",
+      "verdict": "pass",
+      "state": "SUCCESS"
+    }
+  ],
+  "selfReportedComplete": true,
+  "selfReportAccurate": true,
+  "wallClockSeconds": 331,
+  "concurrentRuns": 3,
+  "tokens": {
+    "input": 23,
+    "output": 10505,
+    "reasoning": 0,
+    "cacheWrite": 29125,
+    "cacheRead": 405014
+  },
+  "costUsd": 0.3884,
+  "modelSteps": 21,
+  "toolCalls": 22,
+  "oracleAccess": {
+    "criteriaCommittedInRepo": true,
+    "readCriteriaFile": true,
+    "ranAcceptanceSuiteLocally": true,
+    "acceptanceRunCount": 1,
+    "note": "The agent can read acceptance/ and run `npm run acceptance`. A pass therefore means \"converged against a visible oracle\", not \"was right without checking\"."
+  },
+  "filesTouched": [
+    "src/audit-trail/index.js",
+    "test/audit-trail.test.js"
+  ],
+  "touchedOutsideScope": false,
+  "filesOutsideScope": [],
+  "retried": false
+}
